@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="horizontal"
-              android:padding="8dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-  <ImageView
-      android:id="@+id/imageView1"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      tools:src="@tools:sample/avatars"/>
-  <TextView
-      android:id="@+id/textView1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:padding="5dp"
-      tools:text="@tools:sample/lorem" />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+  <View
+      android:id="@+id/view2"
+      android:layout_width="6dp"
+      android:layout_height="75dp"
+      android:background="@color/design_default_color_error" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginRight="8dp"
+      android:background="#F3F3F3"
+      android:orientation="vertical"
+      android:padding="8dp">
+
+    <TextView
+        android:id="@+id/txtTitel"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="Andriod Project" />
+
+    <TextView
+        android:id="@+id/txtVPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="High priority" />
+  </LinearLayout>
+
 </LinearLayout>

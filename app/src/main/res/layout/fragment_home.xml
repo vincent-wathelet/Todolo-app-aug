@@ -21,7 +21,7 @@
                 android:id="@+id/btn_Search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -35,7 +35,7 @@
                     android:background="@drawable/roundbutton"
                     android:baselineAlignBottom="true"
                     android:clickable="false"
-                    android:padding="5dp"
+                    android:padding="7dp"
                     android:src="@drawable/ic_search_black_24dp" />
 
                 <TextView
@@ -43,18 +43,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="0.5"
                     android:text="@string/searchnavbar"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:layout_marginStart="5dp" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/btn_calander"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -68,7 +68,7 @@
                     android:background="@drawable/roundbutton"
                     android:baselineAlignBottom="true"
                     android:clickable="false"
-                    android:padding="5dp"
+                    android:padding="7dp"
                     android:src="@drawable/ic_baseline_calendar_today_24" />
 
                 <TextView
@@ -83,9 +83,49 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/btn_starred"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_starredimage"
+                    style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:background="@drawable/roundbutton"
+                    android:baselineAlignBottom="true"
+                    android:clickable="false"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_baseline_star_24" />
+
+                <TextView
+                    android:id="@+id/btn_starredtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.5"
+                    android:text="@string/btn_calender_text"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            </LinearLayout>
+
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="#AFAFAF" />
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/todo_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="25dp"
