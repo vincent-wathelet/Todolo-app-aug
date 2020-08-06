@@ -8,7 +8,7 @@
     android:padding="8dp">
 
   <View
-      android:id="@+id/view2"
+      android:id="@+id/priority_View"
       android:layout_width="6dp"
       android:layout_height="75dp"
       android:background="@color/design_default_color_error" />
@@ -22,7 +22,7 @@
       android:padding="8dp">
 
     <TextView
-        android:id="@+id/txtTitel"
+        android:id="@+id/txt_Todo_Titel"
         style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:text="Andriod Project" />
 
     <TextView
-        android:id="@+id/txtVPriority"
+        android:id="@+id/txt_Priority"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"

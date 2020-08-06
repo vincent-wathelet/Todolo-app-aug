@@ -7,11 +7,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import java.util.List;
 
+import be.ehb.Todolo.Apapters.TodoAdapter;
 import be.ehb.Todolo.ViewModel.TodoViewModel;
 import be.ehb.Todolo.room.Entity.TodoListWithTasks;
 
@@ -26,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        RecyclerView recyclerView = findViewById(R.id.todo_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        final TodoAdapter adapter = new TodoAdapter(this);
+        recyclerView.setAdapter(adapter);
+
+
         //data
 
         todoViewModel = ViewModelProviders.of(this).get(TodoViewModel.class);
@@ -33,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<TodoListWithTasks> todoListWithTasks) {
 
+                adapter.setTodo(todoListWithTasks);
 
 
             }

@@ -27,7 +27,7 @@ public interface TodoListDAO {
     @Delete
     void delete(TodoList list);
 
-    @Query("SELECT * FROM list_table ORDER BY title DESC")
+    @Query("SELECT * FROM list_table ORDER BY priority DESC ")
     LiveData<List<TodoListWithTasks>> getAllTodoList();
 
     @Query("DELETE from list_table")

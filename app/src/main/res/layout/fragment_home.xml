@@ -112,7 +112,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="0.5"
-                    android:text="@string/btn_calender_text"
+                    android:text="@string/btn_stared_text"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
             </LinearLayout>
 

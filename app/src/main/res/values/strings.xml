@@ -9,4 +9,10 @@
     <string name="nav_drawer_open">Open Navigation drawer</string>
     <string name="nav_drawer_close">Close Navigation drawer</string>
     <string name="btn_calender_text">calender</string>
+    <string name="btn_stared_text">stared</string>
+
+    <string name="priority_Small">Small Priority</string>
+    <string name="priority_Meduim">Medium Priority</string>
+    <string name="priority_High">High Priority</string>
+    <string name="priority_Urgent">Urgent Priority</string>
 </resources>

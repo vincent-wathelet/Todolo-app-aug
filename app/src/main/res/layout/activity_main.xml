@@ -23,11 +23,148 @@
             app:title="@string/app_name"
             />
 
-        <fragment
-            android:id="@+id/main_activity_fragment"
+        <FrameLayout
+            android:id="@+id/home_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="be.ehb.Todolo.Home"/>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="25dp">
+
+                    <LinearLayout
+                        android:id="@+id/btn_Search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btn_search_image"
+                            style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:background="@drawable/roundbutton"
+                            android:baselineAlignBottom="true"
+                            android:clickable="false"
+                            android:padding="7dp"
+                            android:src="@drawable/ic_search_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/btn_search_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.5"
+                            android:text="@string/searchnavbar"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_calander"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btn_calander_image"
+                            style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:background="@drawable/roundbutton"
+                            android:baselineAlignBottom="true"
+                            android:clickable="false"
+                            android:padding="7dp"
+                            android:src="@drawable/ic_baseline_calendar_today_24" />
+
+                        <TextView
+                            android:id="@+id/btn_calander_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.5"
+                            android:text="@string/btn_calender_text"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_starred"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btn_starredimage"
+                            style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:background="@drawable/roundbutton"
+                            android:baselineAlignBottom="true"
+                            android:clickable="false"
+                            android:padding="7dp"
+                            android:src="@drawable/ic_baseline_star_24" />
+
+                        <TextView
+                            android:id="@+id/btn_starredtext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.5"
+                            android:text="@string/btn_stared_text"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#AFAFAF" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/todo_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="25dp"
+                    tools:itemCount="11"
+                    tools:listitem="@layout/recycler_view_item" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floating_addList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="28dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_playlist_add_24" />
+        </FrameLayout>
 
 
     </LinearLayout>
@@ -40,7 +177,9 @@
         android:id="@+id/nav_view"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/mainnavdrawer"
-        />
+        >
+
+    </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
