@@ -16,7 +16,7 @@ import java.util.Date;
 import be.ehb.Todolo.room.DAO.*;
 import be.ehb.Todolo.room.Entity.*;
 
-@androidx.room.Database(entities = {Task.class, TodoList.class}, version = 1)
+@androidx.room.Database(entities = {Task.class, TodoList.class}, version = 1,exportSchema = false)
 public abstract class Database extends RoomDatabase {
 
     private static Database database;

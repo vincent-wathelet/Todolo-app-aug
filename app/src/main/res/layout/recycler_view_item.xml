@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,7 +11,7 @@
   <View
       android:id="@+id/priority_View"
       android:layout_width="6dp"
-      android:layout_height="75dp"
+      android:layout_height="70dp"
       android:background="@color/design_default_color_error" />
 
   <LinearLayout
@@ -18,23 +19,55 @@
       android:layout_height="match_parent"
       android:layout_marginRight="8dp"
       android:background="#F3F3F3"
-      android:orientation="vertical"
-      android:padding="8dp">
+      android:orientation="horizontal"
+      android:padding="8dp"
+      android:layout_marginEnd="8dp">
 
-    <TextView
-        android:id="@+id/txt_Todo_Titel"
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="Andriod Project" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txt_Priority"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="High priority" />
+      <TextView
+          android:id="@+id/txt_Todo_Titel"
+          style="@style/TextAppearance.AppCompat.Headline"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:maxLines="1"
+          android:text="Andriod Project" />
+
+      <TextView
+          android:id="@+id/txt_Priority"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:maxLines="1"
+          android:text="High priority" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+      <ImageButton
+          android:id="@+id/recycler_list_edit"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/roundbutton"
+          android:contentDescription="TODO"
+          android:padding="4dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/ic_baseline_edit_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
   </LinearLayout>
+
 
 </LinearLayout>

@@ -15,4 +15,16 @@
     <string name="priority_Meduim">Medium Priority</string>
     <string name="priority_High">High Priority</string>
     <string name="priority_Urgent">Urgent Priority</string>
+
+    <string name="toast_message_all_List_deleted">all todo List have been deleted</string>
+    <string name="create_todo_titel">Create a List</string>
+    <string name="create_todo_titel_update">Update a List</string>
+    <string name="create_todo_titelplachodler">Title</string>
+    <string name="create_todo_">Choose Priority</string>
+    <string name="create_todo_priority">Choose Priority</string>
+    <string name="create_todo_savebtn_content_desc">Save button</string>
+    <string name="create_todo_textinput_content_desc">text input field for titel</string>
+    <string name="create_todo_closebtn_desc">to close screen of creating a list</string>
+    <string name="error_message_title">Fill in a title from at least 5 characters</string>
+    <string name="main_menu_deleteAll">Delete All Todo List</string>
 </resources>
