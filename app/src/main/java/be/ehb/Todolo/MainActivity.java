@@ -30,13 +30,14 @@ import java.util.List;
 import be.ehb.Todolo.Apapters.TodoAdapter;
 import be.ehb.Todolo.ViewModel.TodoViewModel;
 import be.ehb.Todolo.fragmentinterfaces.CreateTodoInterface;
+import be.ehb.Todolo.interfaces.TodoOnItemClickListener;
 import be.ehb.Todolo.room.Entity.TodoList;
 import be.ehb.Todolo.room.Entity.TodoListWithTasks;
 
 public class MainActivity extends AppCompatActivity implements CreateTodoInterface {
 
     private DrawerLayout drawerLayout;
-
+    private TodoAdapter adapter;
     private TodoViewModel todoViewModel;
 
     @Override
@@ -48,9 +49,15 @@ public class MainActivity extends AppCompatActivity implements CreateTodoInterfa
         RecyclerView recyclerView = findViewById(R.id.todo_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        final TodoAdapter adapter = new TodoAdapter(this);
+        adapter = new TodoAdapter(this);
         recyclerView.setAdapter(adapter);
-
+        adapter.setOnItemClickListener(new TodoOnItemClickListener() {
+            @Override
+            public void onEditClick(int position) {
+                    TodoListWithTasks listWithTasks = adapter.getItemOnPosition(position);
+                    createFragment(listWithTasks.getTodoList(),position);
+            }
+        });
 
         //data and setting to recycler view
         todoViewModel = ViewModelProviders.of(this).get(TodoViewModel.class);
@@ -85,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements CreateTodoInterfa
             @Override
             public void onClick(View view) {
 
-                createFragment(null);
+                createFragment(null,-1);
             }
         });
 
@@ -102,9 +109,9 @@ public class MainActivity extends AppCompatActivity implements CreateTodoInterfa
 
 
     @Override
-    public void createFragment(TodoList list) {
+    public void createFragment(TodoList list,int position) {
 
-        CreateTodoFragment createTodoFragment = CreateTodoFragment.newInstance(list);
+        CreateTodoFragment createTodoFragment = CreateTodoFragment.newInstance(list,position);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_right,R.anim.enter_from_right,R.anim.exit_to_right);
@@ -114,13 +121,20 @@ public class MainActivity extends AppCompatActivity implements CreateTodoInterfa
     }
 
     @Override
-    public void onFragmentInteraction(TodoList list) {
+    public void onFragmentInteraction(TodoList list,int position) {
 
         FloatingActionButton fab = this.findViewById(R.id.floating_addList);
         fab.setVisibility(View.VISIBLE);
         if(list != null)
         {
-          todoViewModel.insert(list);
+          if (position == -1) {
+              todoViewModel.insert(list);
+          }
+          else
+              {
+                  todoViewModel.update(list);
+                  adapter.notifyItemChanged(position);
+              }
         }
         onBackPressed();
 
@@ -137,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements CreateTodoInterfa
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_list_delete_all)
         {
+            //TODO: 2 string nog aan maken zo dat  ze vertaald kunnen worden
             new AlertDialog.Builder(this)
                     .setTitle("Title")
                     .setMessage("Do you really want to whatever?")

@@ -1,15 +1,14 @@
 package be.ehb.Todolo.Apapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
@@ -17,12 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import be.ehb.Todolo.R;
-import be.ehb.Todolo.room.Entity.Task;
+import be.ehb.Todolo.interfaces.TodoOnItemClickListener;
 import be.ehb.Todolo.room.Entity.TodoListWithTasks;
 
 public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
 
     private List<TodoListWithTasks> todo = new ArrayList<>();
+    private TodoOnItemClickListener listener;
     private Context context;
 
     public TodoAdapter(Context context)
@@ -34,7 +34,7 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
     @Override
     public Todoholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item,parent,false);
-        return new Todoholder(itemView);
+        return new Todoholder(itemView,listener);
     }
 
     @Override
@@ -75,6 +75,26 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
         this.todo = todo;
         //TODO : nog verbeteren
         notifyDataSetChanged();
+
+    }
+
+    public void notifyDataChanged(int position)
+    {
+        notifyItemChanged(position);
+    }
+    public void notifyDataDeleted(int posistion)
+    {
+        notifyItemRemoved(posistion);
+    }
+
+    public void setOnItemClickListener(TodoOnItemClickListener listener)
+    {
+        this.listener = listener;
+    }
+
+    public TodoListWithTasks getItemOnPosition(int position)
+    {
+        return todo.get(position);
     }
 
     class Todoholder extends ViewHolder
@@ -82,13 +102,28 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
         private View priorityView;
         private TextView txtVPriority;
         private  TextView txtTitel;
+        private ImageButton editbtn;
 
-
-        public Todoholder(@NonNull View itemView) {
+        public Todoholder(@NonNull final View itemView, final TodoOnItemClickListener listener) {
             super(itemView);
-            this.priorityView = itemView.findViewById(R.id.priority_View);
-            this.txtTitel = itemView.findViewById(R.id.txt_Todo_Titel);
-            this.txtVPriority = itemView.findViewById(R.id.txt_Priority);
+            this.priorityView = itemView.findViewById(R.id.recycler_list_priority_view);
+            this.txtTitel = itemView.findViewById(R.id.recycler_list_Titel);
+            this.txtVPriority = itemView.findViewById(R.id.recycler_list_txt_Priority);
+            this.editbtn = itemView.findViewById(R.id.recycler_list_edit);
+
+            editbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null)
+                    {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION)
+                        {
+                            listener.onEditClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

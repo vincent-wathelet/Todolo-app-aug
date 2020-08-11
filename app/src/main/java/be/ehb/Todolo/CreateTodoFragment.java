@@ -30,7 +30,8 @@ public class CreateTodoFragment extends Fragment {
     private static final String TITLE = "TITLE";
     private static final String PRIORITY = "PRIORITY";
     private static final String ID = "ID";
-
+    private static final String POSITION = "POSITION";
+    private int posistion = -1;
     private TodoList todoList = null;
     private CreateTodoInterface mListener;
     private String title = null;
@@ -38,7 +39,7 @@ public class CreateTodoFragment extends Fragment {
     public CreateTodoFragment() {
     }
 
-    public static CreateTodoFragment newInstance(TodoList list) {
+    public static CreateTodoFragment newInstance(TodoList list, int posistion) {
         CreateTodoFragment todofragment = new CreateTodoFragment();
         Bundle args = new Bundle();
         if (list != null){
@@ -46,6 +47,8 @@ public class CreateTodoFragment extends Fragment {
             args.putString(TITLE,list.getTitle());
             args.putInt(PRIORITY,list.getPriority());
             args.putInt(ID,list.getId());
+            args.putInt(POSITION,posistion);
+            todofragment.setArguments(args);
         }
 
         return todofragment;
@@ -55,6 +58,7 @@ public class CreateTodoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            posistion = getArguments().getInt(POSITION);
             title = getResources().getString(getArguments().getInt(FRAGMENTTITLE));
             todoList = new TodoList(getArguments().getString(TITLE),getArguments().getInt(PRIORITY));
             todoList.setId(getArguments().getInt(ID));
@@ -74,7 +78,7 @@ public class CreateTodoFragment extends Fragment {
         final TextView idtextfield = view.findViewById(R.id.create_list_id_variable);
         final TextView titleText = view.findViewById(R.id.txt_todolist_title);
         final RadioGroup radioGroup = view.findViewById(R.id.priority_btn_group);
-        if(title != null )
+        if(title != null && posistion != -1 )
         {
             idtextfield.setText(String.valueOf(todoList.getId()));
             TextView fragmentTitle =   view.findViewById(R.id.create_list_titeltxt);
@@ -160,7 +164,7 @@ public class CreateTodoFragment extends Fragment {
     public void sendBack(TodoList todoList)
     {
         if (mListener != null) {
-            mListener.onFragmentInteraction(todoList);
+            mListener.onFragmentInteraction(todoList,posistion);
         }
     }
 

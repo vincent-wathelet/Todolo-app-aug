@@ -9,7 +9,7 @@
     android:padding="8dp">
 
   <View
-      android:id="@+id/priority_View"
+      android:id="@+id/recycler_list_priority_view"
       android:layout_width="6dp"
       android:layout_height="70dp"
       android:background="@color/design_default_color_error" />
@@ -29,7 +29,7 @@
         android:orientation="vertical">
 
       <TextView
-          android:id="@+id/txt_Todo_Titel"
+          android:id="@+id/recycler_list_Titel"
           style="@style/TextAppearance.AppCompat.Headline"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
           android:text="Andriod Project" />
 
       <TextView
-          android:id="@+id/txt_Priority"
+          android:id="@+id/recycler_list_txt_Priority"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:maxLines="1"
