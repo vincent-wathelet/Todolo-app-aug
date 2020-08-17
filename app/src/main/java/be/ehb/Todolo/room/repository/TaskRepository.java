@@ -46,6 +46,7 @@ public class TaskRepository {
         new deleteTaskAsyncTask(taskDAO).execute();
     }
 
+
     public LiveData<List<Task>> getAllStaredTask(boolean status)  {
         LiveData<List<Task>>  liveData = null;
         AsyncTask<Boolean, Void, LiveData<List<Task>>> task =  new  getAllStarredTaskAsyncTask(taskDAO).execute(status);
@@ -189,6 +190,7 @@ public class TaskRepository {
             return this.taskDAO.getAllTaskFromList(ints[0]);
         }
     }
+
 
 }
 

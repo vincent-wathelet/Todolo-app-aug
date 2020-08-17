@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="25dp"
+    android:orientation="vertical"
     tools:context=".DetailView">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="25dp"
-        android:orientation="vertical">
 
         <TextView
             android:id="@+id/detail_task_titel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Andriod"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
         <TextView
             android:id="@+id/detail_task_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="monday 25 april 2020"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="18sp" />
 
@@ -34,17 +29,15 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/detail_taskdesctitel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Description" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/detail_task_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting," />
+                android:padding="8dp" />
 
             <ImageButton
                 android:id="@+id/detail_task_btn_edit"
@@ -53,10 +46,11 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/roundbutton"
+                android:contentDescription="@string/content_desc_edit_task"
                 android:padding="8dp"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_baseline_edit_24" />
 
         </LinearLayout>
 
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>

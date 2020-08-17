@@ -32,4 +32,9 @@
     <string name="todo_snacbar_delete_message">Todo List is deleted</string>
     <string name="dutch">Dutch</string>
     <string name="english">English</string>
+    <string name="task_description">Description</string>
+    <string name="content_desc_edit_task">edit selected task</string>
+    <string name="create_task">create task</string>
+    <string name="update_task">update task</string>
+    <string name="todo_date">Todo Date</string>
 </resources>

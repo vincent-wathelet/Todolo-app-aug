@@ -34,4 +34,5 @@ public interface TaskDAO {
     LiveData<List<Task>> getAllTaskFromList(int id);
     @Query("SELECT * FROM task_table WHERE stared = :status ORDER BY priority DESC")
     LiveData<List<Task>> getAllStaredTask(boolean status);
+
 }

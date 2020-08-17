@@ -2,7 +2,7 @@ package be.ehb.Todolo.fragmentinterfaces;
 
 public interface RecylcerTaskInterface {
 
-    void onItemClick(int id);
+    void sendItemClick(int id);
 
     void onStarClick(int id);
 

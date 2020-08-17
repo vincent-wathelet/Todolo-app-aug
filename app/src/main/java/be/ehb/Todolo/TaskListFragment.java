@@ -20,14 +20,17 @@ import java.util.List;
 import be.ehb.Todolo.Apapters.TaskAdapter;
 import be.ehb.Todolo.Apapters.TodoAdapter;
 import be.ehb.Todolo.ViewModel.TaskViewModel;
+import be.ehb.Todolo.fragmentinterfaces.RecyclerTaskFragmentInterface;
+import be.ehb.Todolo.fragmentinterfaces.RecylcerTaskInterface;
 import be.ehb.Todolo.parceble.ListParcel;
 import be.ehb.Todolo.room.Entity.Task;
 
-public class TaskListFragment extends Fragment {
+public class TaskListFragment extends Fragment implements RecylcerTaskInterface {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String LIST = "list";
 
+    public static RecyclerTaskFragmentInterface listener = null;
     private ListParcel list;
     private TaskViewModel taskviewmodel;
     private TaskAdapter adapter;
@@ -36,9 +39,10 @@ public class TaskListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static TaskListFragment newInstance(ListParcel listParcel) {
+    public static TaskListFragment newInstance(ListParcel listParcel,RecyclerTaskFragmentInterface listenerIn) {
         TaskListFragment fragment = new TaskListFragment();
         Bundle args = new Bundle();
+        listener = listenerIn;
         args.putParcelable(LIST,listParcel);
         fragment.setArguments(args);
         return fragment;
@@ -77,7 +81,7 @@ public class TaskListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rView =  inflater.inflate(R.layout.fragment_todo_recyler, container, false);
-
+        adapter.setOnItemClickListener(this);
         RecyclerView recyclerView = rView.findViewById(R.id.recycler_view_todo_taks);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
@@ -96,5 +100,29 @@ public class TaskListFragment extends Fragment {
     private void getBack()
     {
         getActivity().finish();
+    }
+
+    @Override
+    public void sendItemClick(int id) {
+
+        listener.sendDetails(id);
+    }
+
+    @Override
+    public void onStarClick(int id) {
+
+        Task task = adapter.getItemOnPosition(id);
+        task.setStared(!task.isStared());
+        taskviewmodel.update(task);
+        adapter.notifyItemChanged(id);
+    }
+
+    @Override
+    public void onCompletedClick(int id) {
+
+        Task task = adapter.getItemOnPosition(id);
+        task.setCompleted(!task.isCompleted());
+        taskviewmodel.update(task);
+        adapter.notifyItemChanged(id);
     }
 }

@@ -3,10 +3,18 @@ package be.ehb.Todolo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
+
+import be.ehb.Todolo.ViewModel.TaskViewModel;
+import be.ehb.Todolo.fragmentinterfaces.DetailTaskInterface;
+import be.ehb.Todolo.room.Entity.Task;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,34 +23,24 @@ import android.view.ViewGroup;
  */
 public class DetailView extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static DetailTaskInterface listener;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String ARG_PARAM1 = "taskid";
+    private Task task;
+    private int id;
+    private TaskViewModel taskviewmodel;
 
     public DetailView() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DetailView.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DetailView newInstance(String param1, String param2) {
+    public static DetailView newInstance(int param1,DetailTaskInterface listenerInput) {
         DetailView fragment = new DetailView();
+        listener = listenerInput;
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, param1);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -50,15 +48,41 @@ public class DetailView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            id = getArguments().getInt(ARG_PARAM1);
+        }
+        if (getActivity() != null) {
+            taskviewmodel = new ViewModelProvider(getActivity()).get(TaskViewModel.class);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_view, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_detail_view, container, false);
+        if (id != -1)
+        {
+            task = taskviewmodel.getTaskLivedata().getValue().get(id);
+
+            TextView t = v.findViewById(R.id.detail_task_titel);
+            t.setText(task.getTitle());
+            TextView date = v.findViewById(R.id.detail_task_date);
+            date.setText(task.getTododate());
+            TextView desc = v.findViewById(R.id.detail_task_details);
+            desc.setText(task.getDescription());
+            TextView textView = v.findViewById(R.id.detail_taskdesctitel);
+            textView.setText(R.string.task_description);
+            v.findViewById(R.id.detail_task_btn_edit).setVisibility(View.VISIBLE);
+        }
+        return v;
+    }
+
+    public void setTaskDetail(int posistion)
+    {
+        id = posistion;
+
+
+
     }
 }

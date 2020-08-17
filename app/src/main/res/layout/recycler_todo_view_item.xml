@@ -21,7 +21,8 @@ android:padding="8dp">
         android:layout_marginRight="8dp"
         android:background="#F3F3F3"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:id="@+id/task_item_click">
 
         <LinearLayout
             android:layout_width="wrap_content"

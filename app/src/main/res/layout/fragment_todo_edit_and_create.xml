@@ -22,7 +22,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:text="@string/create_todo_titel"
+            android:text="@string/create_task"
             android:textAlignment="center" />
 
         <ImageButton
@@ -48,19 +48,28 @@
     </RelativeLayout>
 
 
-    <EditText
-        android:id="@+id/txt_todolist_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:ems="10"
-        android:hint="@string/create_todo_textinput_content_desc"
-        android:importantForAutofill="no"
-        android:inputType="textNoSuggestions|text"
-        android:maxLines="1"
-        android:text="@string/create_todo_titelplachodler" />
+        <EditText
+            android:id="@+id/txt_todolist_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:hint="@string/create_todo_titelplachodler"
+            android:importantForAutofill="no"
+            android:inputType="textNoSuggestions|text"
+            android:maxLines="1" />
 
-    <TextView
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/task_description"
+            android:inputType="textMultiLine" />
+
+        <TextView
         android:id="@+id/create_list_id_variable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,7 +78,16 @@
 
         />
 
-    <TextView
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:hint="@string/todo_date"
+            android:inputType="date" />
+
+        <TextView
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,7 +95,7 @@
         android:layout_margin="8dp"
         android:text="@string/create_todo_priority" />
 
-    <RadioGroup
+        <RadioGroup
         android:id="@+id/priority_btn_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,7 +132,7 @@
             android:textColor="@color/urgent" />
     </RadioGroup>
 
-    <ImageButton
+        <ImageButton
         android:id="@+id/btn_todo_list_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

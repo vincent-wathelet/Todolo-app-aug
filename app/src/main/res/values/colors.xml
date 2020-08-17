@@ -12,6 +12,6 @@
     <color name="highPriority">#FE9217</color>
     <color name="urgent">#E64F3B</color>
 
-
+    <color name="cardcolor">#F3F3F3</color>
     <color name="transparent">#00FFFFFF</color>
 </resources>
