@@ -1,5 +1,6 @@
 package be.ehb.Todolo.room.Entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -110,5 +111,11 @@ public class Task {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Tasks :[todolistid = " + this.todolistid + ",title = " + this.title + ", description = " + this.description + ", tododate = " +  this.tododate + ", priority = " + this.priority + ", stared = "+ this.stared + ", archived = " + this.archived + ", completed = " + this.completed + "]";
     }
 }

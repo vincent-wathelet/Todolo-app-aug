@@ -5,17 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_baseline_home_24"
-            android:title="@string/homenavbar" />
+            android:id="@+id/nav_Async_json"
+            android:icon="@drawable/ic_baseline_compare_arrows_24"
+            android:title="@string/async_json" />
         <item
             android:id="@+id/nav_acount"
             android:icon="@drawable/ic_baseline_person_24"
             android:title="@string/acountnavbar" />
-        <item
-            android:id="@+id/nav_Settings"
-            android:icon="@drawable/ic_baseline_settings_24"
-            android:title="@string/settingnavbar" />
 
     </group>
 

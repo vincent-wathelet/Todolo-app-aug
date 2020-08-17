@@ -24,10 +24,14 @@ public interface TaskDAO {
     @Delete
     void delete(Task task);
 
-    @Query("SELECT * FROM task_table ORDER BY tododate DESC")
+    @Query("SELECT * FROM task_table ORDER BY priority DESC")
     LiveData<List<Task>> getAllTask();
 
     @Query("DELETE from task_table")
     void deleteAllTask();
 
+    @Query("SELECT * FROM task_table WHERE todolistid = :id ORDER BY priority DESC")
+    LiveData<List<Task>> getAllTaskFromList(int id);
+    @Query("SELECT * FROM task_table WHERE stared = :status ORDER BY priority DESC")
+    LiveData<List<Task>> getAllStaredTask(boolean status);
 }

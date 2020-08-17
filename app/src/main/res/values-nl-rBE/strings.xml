@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Todolo</string>
+    <string name="searchnavbar">Zoeken</string>
+    <string name="acountnavbar">Profiel</string>
+    <string name="settingnavbar">Instellingen</string>
+    <string name="navicondescription">applicatie logo</string>
+    <string name="navwelcome">welcome bij todolo</string>
+    <string name="nav_drawer_open">open navigatie drawer</string>
+    <string name="nav_drawer_close">sluit navigatie drawer</string>
+    <string name="btn_calender_text">calender</string>
+    <string name="priority_Small">kleine prioriteit</string>
+    <string name="priority_High">Hoge prioriteit</string>
+    <string name="priority_Meduim">Meduim prioriteit</string>
+    <string name="priority_Urgent">Drigent</string>
+    <string name="toast_message_all_List_deleted">allle Todo Lijsten zijn verwijderd</string>
+    <string name="create_todo_titel">maak een lijst</string>
+    <string name="create_todo_titel_update">aanpassen van lijst</string>
+    <string name="create_todo_titelplachodler">tittel</string>
+    <string name="create_todo_">kies een prioriteit</string>
+    <string name="create_todo_priority">kies een prioriteit</string>
+    <string name="create_todo_savebtn_content_desc">Opslaan</string>
+    <string name="create_todo_textinput_content_desc">text veld voor titel</string>
+    <string name="async_json">Async Json</string>
+    <string name="async_btn_get_acounts">Resquest profielen</string>
+    <string name="choose_language">kies een taal</string>
+    <string name="btn_stared_text">Favorieten</string>
+    <string name="create_todo_closebtn_desc">Button voor het sluiten van anmaak venster</string>
+    <string name="error_message_title">vull op zen minst 5 characters</string>
+    <string name="main_menu_deleteAll">verwijder alle Todo lijsten</string>
+    <string name="delete_all_message">ben je zeker dat je alle lijsten wilt verwijderen</string>
+    <string name="todo_snacbar_delete_message">todo lijst is verwijderd</string>
+    <string name="dutch">Nederlands</string>
+    <string name="english">Engels</string>
+</resources>

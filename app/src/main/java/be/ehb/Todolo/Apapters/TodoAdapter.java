@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
@@ -19,16 +22,31 @@ import be.ehb.Todolo.R;
 import be.ehb.Todolo.interfaces.TodoOnItemClickListener;
 import be.ehb.Todolo.room.Entity.TodoListWithTasks;
 
-public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
+public class TodoAdapter extends ListAdapter<TodoListWithTasks, TodoAdapter.Todoholder> {
 
-    private List<TodoListWithTasks> todo = new ArrayList<>();
     private TodoOnItemClickListener listener;
     private Context context;
 
     public TodoAdapter(Context context)
     {
+        super(DIFF_CALLBACK);
         this.context = context;
     }
+    private static final DiffUtil.ItemCallback<TodoListWithTasks> DIFF_CALLBACK = new DiffUtil.ItemCallback<TodoListWithTasks>()
+    {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull TodoListWithTasks oldItem, @NonNull TodoListWithTasks newItem) {
+            return oldItem.getTodoList().getId() == newItem.getTodoList().getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull TodoListWithTasks oldItem, @NonNull TodoListWithTasks newItem) {
+                return oldItem.getTodoList().getId() == newItem.getTodoList().getId() &&
+                        oldItem.getTodoList().getPriority() == newItem.getTodoList().getPriority()&&
+                        oldItem.getTodoList().getTitle().equals( newItem.getTodoList().getTitle());
+        }
+    };
 
     @NonNull
     @Override
@@ -39,7 +57,7 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
 
     @Override
     public void onBindViewHolder(@NonNull Todoholder holder, int position) {
-        TodoListWithTasks listWithTasks = todo.get(position);
+        TodoListWithTasks listWithTasks = getItem(position);
         holder.txtTitel.setText(listWithTasks.getTodoList().getTitle());
         int priority = listWithTasks.getTodoList().getPriority();
         switch (priority)
@@ -47,8 +65,8 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
             case 0:
             default:
                 holder.priorityView.setBackgroundColor(context.getResources().getColor(R.color.smallTask));
-              holder.txtVPriority.setText(R.string.priority_Small);
-              break;
+                holder.txtVPriority.setText(R.string.priority_Small);
+                break;
             case 1:
                 holder.priorityView.setBackgroundColor(context.getResources().getColor(R.color.meduimPriority));
                 holder.txtVPriority.setText(R.string.priority_Meduim);
@@ -58,7 +76,7 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
                 holder.txtVPriority.setText(R.string.priority_High);
                 break;
             case 3:
-                holder.priorityView.setBackgroundColor(context.getResources().getColor(R.color.Urgent));
+                holder.priorityView.setBackgroundColor(context.getResources().getColor(R.color.urgent));
                 holder.txtVPriority.setText(R.string.priority_Urgent);
                 break;
         }
@@ -66,26 +84,8 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
 
     }
 
-    @Override
-    public int getItemCount() {
-        return todo.size();
-    }
 
-    public void setTodo(List<TodoListWithTasks> todo) {
-        this.todo = todo;
-        //TODO : nog verbeteren
-        notifyDataSetChanged();
 
-    }
-
-    public void notifyDataChanged(int position)
-    {
-        notifyItemChanged(position);
-    }
-    public void notifyDataDeleted(int posistion)
-    {
-        notifyItemRemoved(posistion);
-    }
 
     public void setOnItemClickListener(TodoOnItemClickListener listener)
     {
@@ -94,15 +94,16 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
 
     public TodoListWithTasks getItemOnPosition(int position)
     {
-        return todo.get(position);
+        return getItem(position);
     }
 
-    class Todoholder extends ViewHolder
+    static class Todoholder extends ViewHolder
     {
         private View priorityView;
         private TextView txtVPriority;
         private  TextView txtTitel;
         private ImageButton editbtn;
+        private LinearLayout item_view;
 
         public Todoholder(@NonNull final View itemView, final TodoOnItemClickListener listener) {
             super(itemView);
@@ -110,6 +111,22 @@ public class TodoAdapter extends Adapter<TodoAdapter.Todoholder> {
             this.txtTitel = itemView.findViewById(R.id.recycler_list_Titel);
             this.txtVPriority = itemView.findViewById(R.id.recycler_list_txt_Priority);
             this.editbtn = itemView.findViewById(R.id.recycler_list_edit);
+            this.item_view = itemView.findViewById(R.id.recycler_list_item_view);
+
+            item_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null)
+                    {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION)
+                        {
+                            listener.onClickListItem(position);
+                        }
+                    }
+                }
+            });
+
 
             editbtn.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TodoEditAndCreate">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/create_list_titeltxt"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="@string/create_todo_titel"
+            android:textAlignment="center" />
+
+        <ImageButton
+            android:id="@+id/btn_create_list_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/create_list_titeltxt"
+            android:layout_alignRight="@id/create_list_titeltxt"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/roundbutton"
+            android:contentDescription="@string/create_todo_closebtn_desc"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_baseline_close_24" />
+
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/txt_todolist_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ems="10"
+        android:hint="@string/create_todo_textinput_content_desc"
+        android:importantForAutofill="no"
+        android:inputType="textNoSuggestions|text"
+        android:maxLines="1"
+        android:text="@string/create_todo_titelplachodler" />
+
+    <TextView
+        android:id="@+id/create_list_id_variable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:visibility="gone"
+
+        />
+
+    <TextView
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_margin="8dp"
+        android:text="@string/create_todo_priority" />
+
+    <RadioGroup
+        android:id="@+id/priority_btn_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/create_list_smallrbtn"
+        android:padding="8dp">
+
+        <RadioButton
+            android:id="@+id/create_list_smallrbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_Small"
+
+            android:textColor="@color/smallTask" />
+
+        <RadioButton
+            android:id="@+id/create_list_meduimrbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_Meduim"
+            android:textColor="@color/meduimPriority" />
+
+        <RadioButton
+            android:id="@+id/create_list_highrbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_High"
+            android:textColor="@color/highPriority" />
+
+        <RadioButton
+            android:id="@+id/create_list_urgentrbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_Urgent"
+            android:textColor="@color/urgent" />
+    </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/btn_todo_list_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/roundbutton"
+        android:contentDescription="@string/create_todo_savebtn_content_desc"
+        android:padding="20dp"
+        app:srcCompat="@drawable/ic_baseline_save_24" />
+    </LinearLayout>
+</FrameLayout>

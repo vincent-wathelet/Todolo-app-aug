@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import be.ehb.Todolo.room.DAO.*;
 import be.ehb.Todolo.room.Entity.Task;
@@ -43,6 +44,48 @@ public class TaskRepository {
     public void deleteAll()
     {
         new deleteTaskAsyncTask(taskDAO).execute();
+    }
+
+    public LiveData<List<Task>> getAllStaredTask(boolean status)  {
+        LiveData<List<Task>>  liveData = null;
+        AsyncTask<Boolean, Void, LiveData<List<Task>>> task =  new  getAllStarredTaskAsyncTask(taskDAO).execute(status);
+        if (task.isCancelled())
+        {
+            return liveData;
+        }
+        else
+            {
+                try {
+                    return task.get();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                    return liveData;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return liveData;
+                }
+            }
+    }
+
+    public LiveData<List<Task>> getAllTaskFromList(int id)  {
+        LiveData<List<Task>>  liveData = null;
+        AsyncTask<Integer, Void, LiveData<List<Task>>> task =  new  getAllTaskFromListTaskAsyncTask(this.taskDAO).execute(id);
+        if (task.isCancelled())
+        {
+            return liveData;
+        }
+        else
+        {
+            try {
+                return task.get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+                return liveData;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                return liveData;
+            }
+        }
     }
 
     public LiveData<List<Task>> getAllTask()
@@ -114,6 +157,36 @@ public class TaskRepository {
 
             taskDAO.deleteAllTask();
             return null;
+        }
+    }
+    private static class getAllStarredTaskAsyncTask extends AsyncTask<Boolean, Void, LiveData<List<Task>>>
+    {
+        private TaskDAO taskDAO;
+
+        public getAllStarredTaskAsyncTask(TaskDAO taskDAO) {
+            this.taskDAO = taskDAO;
+        }
+
+
+        @Override
+        protected LiveData<List<Task>> doInBackground(Boolean... booleans) {
+
+            return taskDAO.getAllStaredTask(booleans[0]);
+        }
+    }
+
+    private static  class getAllTaskFromListTaskAsyncTask extends AsyncTask<Integer,Void,LiveData<List<Task>>>
+    {
+        private TaskDAO taskDAO;
+
+        public getAllTaskFromListTaskAsyncTask(TaskDAO taskDAO) {
+            this.taskDAO = taskDAO;
+        }
+
+        @Override
+        protected LiveData<List<Task>> doInBackground(Integer... ints) {
+
+            return this.taskDAO.getAllTaskFromList(ints[0]);
         }
     }
 

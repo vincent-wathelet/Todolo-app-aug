@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Todolo</string>
-    <string name="homenavbar">Home</string>
     <string name="searchnavbar">Search</string>
     <string name="acountnavbar">Account</string>
     <string name="settingnavbar">Setting</string>
@@ -9,15 +8,13 @@
     <string name="nav_drawer_open">Open Navigation drawer</string>
     <string name="nav_drawer_close">Close Navigation drawer</string>
     <string name="btn_calender_text">calender</string>
-    <string name="btn_stared_text">stared</string>
-
     <string name="priority_Small">Small Priority</string>
     <string name="priority_Meduim">Medium Priority</string>
     <string name="priority_High">High Priority</string>
     <string name="priority_Urgent">Urgent Priority</string>
-
     <string name="toast_message_all_List_deleted">all todo List have been deleted</string>
     <string name="create_todo_titel">Create a List</string>
+    <string name="btn_stared_text">stared</string>
     <string name="create_todo_titel_update">Update a List</string>
     <string name="create_todo_titelplachodler">Title</string>
     <string name="create_todo_">Choose Priority</string>
@@ -27,4 +24,12 @@
     <string name="create_todo_closebtn_desc">to close screen of creating a list</string>
     <string name="error_message_title">Fill in a title from at least 5 characters</string>
     <string name="main_menu_deleteAll">Delete All Todo List</string>
+    <string name="async_json">Async Json</string>
+    <string name="hello_blank_fragment" translatable="false">hello blank fragment </string>
+    <string name="async_btn_get_acounts">Get Acounts</string>
+    <string name="choose_language">Choose language</string>
+    <string name="delete_all_message">Are you sure you want to delete all Lists</string>
+    <string name="todo_snacbar_delete_message">Todo List is deleted</string>
+    <string name="dutch">Dutch</string>
+    <string name="english">English</string>
 </resources>

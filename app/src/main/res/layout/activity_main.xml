@@ -43,72 +43,6 @@
                     android:padding="25dp">
 
                     <LinearLayout
-                        android:id="@+id/btn_Search"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal">
-
-                        <ImageButton
-                            android:id="@+id/btn_search_image"
-                            style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:background="@drawable/roundbutton"
-                            android:baselineAlignBottom="true"
-                            android:clickable="false"
-                            android:padding="7dp"
-                            app:srcCompat="@drawable/ic_search_black_24dp" />
-
-                        <TextView
-                            android:id="@+id/btn_search_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight="0.5"
-                            android:text="@string/searchnavbar"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/btn_calander"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal">
-
-                        <ImageButton
-                            android:id="@+id/btn_calander_image"
-                            style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:background="@drawable/roundbutton"
-                            android:baselineAlignBottom="true"
-                            android:clickable="false"
-                            android:padding="7dp"
-                            app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
-
-                        <TextView
-                            android:id="@+id/btn_calander_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight="0.5"
-                            android:text="@string/btn_calender_text"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-                    </LinearLayout>
-
-                    <LinearLayout
                         android:id="@+id/btn_starred"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -155,7 +89,9 @@
                     android:id="@+id/todo_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="@android:dimen/notification_large_icon_height"
                     android:padding="25dp"
+                    android:scrollbars="vertical"
                     tools:itemCount="11"
                     tools:listitem="@layout/recycler_view_item" />
 
@@ -165,12 +101,11 @@
                 android:id="@+id/floating_addList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
+                android:layout_gravity="bottom|center"
                 android:layout_margin="28dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:srcCompat="@drawable/ic_baseline_playlist_add_24"
-                />
+                app:srcCompat="@drawable/ic_baseline_playlist_add_24" />
         </FrameLayout>
 
 

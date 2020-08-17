@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/app_bar_Todo_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/searchnavbar"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/menu_list_delete_all"
         android:title="@string/main_menu_deleteAll"
         app:showAsAction="never" />

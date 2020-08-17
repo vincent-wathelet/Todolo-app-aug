@@ -63,8 +63,10 @@ public abstract class Database extends RoomDatabase {
             listDAO.insert(new TodoList("Huistaken",2));
             taskDAO.insert(new Task(3,"strijken doen","","05/09/2020",3,false,false,false));
             taskDAO.insert(new Task(1,"ui maken","","05/09/2020",3,false,false,false));
-            taskDAO.insert(new Task(1,"room implementerezn","","05/09/2020",2,false,false,false));
-            taskDAO.insert(new Task(1,"database uitschrijven","","05/09/2020",2,true,false,true));
+            taskDAO.insert(new Task(1,"room implementerezn","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,",
+                    "05/09/2020",2,true,false,false));
+            taskDAO.insert(new Task(1,"database uitschrijven","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,",
+                    "05/09/2020",2,true,false,true));
             return null;
         }
     }
